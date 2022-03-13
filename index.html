@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Третий проект на Яндекс.Практикуме" />
+    <meta name="author" content="Кирилл Дианов" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Место</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <a href="#" target="_self" rel="noopener" class="header__logo"></a>
+      </header>
+      <main class="content">
+        <section class="profile">
+          <img
+            class="profile__avatar"
+            src="images/jaque.jpg"
+            alt="Аватар пользователя"
+          />
+          <div class="profile__info">
+            <div class="profile__name-area">
+              <h2 class="profile__name">Жак-Ив Кусто</h2>
+              <button type="button" class="profile__edit-btn"></button>
+            </div>
+            <p class="profile__about">Исследователь океана</p>
+          </div>
+          <button class="profile__add-btn"></button>
+        </section>
+
+        <section class="elements">
+          <ul class="elements__list">
+            <li class="element">
+              <img
+                src="images/karach.jpg"
+                alt="Заброшенная церковь в горах"
+                class="element__image"
+              />
+              <div class="element__info">
+                <h3 class="element__title">Карачаево-Черкесия</h3>
+                <button class="element__like-btn"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                src="images/elbrus.jpg"
+                alt="Холмы в предгории Эльбруса"
+                class="element__image"
+              />
+              <div class="element__info">
+                <h3 class="element__title">Эльбрус</h3>
+                <button class="element__like-btn"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                src="images/dombai.jpg"
+                alt="Горный пик"
+                class="element__image"
+              />
+              <div class="element__info">
+                <h3 class="element__title">Домбай</h3>
+                <button class="element__like-btn"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                src="images/kamchatka.jpg"
+                alt="Озеро в жерле спящего вулкана"
+                class="element__image"
+              />
+              <div class="element__info">
+                <h3 class="element__title">Камчатка</h3>
+                <button class="element__like-btn"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                src="images/onega_lake.jpg"
+                alt="Каменистый берег Онежского озера"
+                class="element__image"
+              />
+              <div class="element__info">
+                <h3 class="element__title">Онежское озеро</h3>
+                <button class="element__like-btn"></button>
+              </div>
+            </li>
+            <li class="element">
+              <img
+                src="images/sudak.jpg"
+                alt="Горный хребет"
+                class="element__image"
+              />
+              <div class="element__info">
+                <h3 class="element__title">Судак</h3>
+                <button class="element__like-btn"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="popup">
+          <div class="popup__container">
+            <button class="popup__close-btn"></button>
+            <form class="profile-editor">
+              <h2 class="profile-editor__heading">Редактировать профиль</h2>
+              <fieldset class="profile-editor__container">
+                <input
+                  type="text"
+                  name="username"
+                  value="Жак-Ив Кусто"
+                  class="profile-editor__item"
+                  required
+                />
+                <input
+                  type="text"
+                  name="job"
+                  value="Исследователь океана"
+                  class="profile-editor__item"
+                  required
+                />
+                <button class="profile-editor__submit-btn">Сохранить</button>
+              </fieldset>
+            </form>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2022. Дианов Кирилл</p>
+      </footer>
+    </div>
+    <script src="pages/index.js"></script>
+  </body>
+</html>
