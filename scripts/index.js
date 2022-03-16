@@ -26,7 +26,7 @@ function formSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = profileInputName.value;
   profileAbout.textContent = profileInputAbout.value;
-  profilePopupClose();
+  closeProfilePopup();
 }; // submit name and job info from edit form into the profile holder
 /* |блок слушателей| */
 formElement.addEventListener('submit', formSubmitHandler);
