@@ -48,7 +48,7 @@ const initialCards = [
   },
 ];
 /*  наполнение карточек */
-function createCards() {
+
   initialCards.forEach((element) => {
   // объявление переменных внутри template
   const elementCard = elementTemplate.cloneNode(true);
@@ -82,8 +82,7 @@ function createCards() {
   });
 
   elementList.append(elementCard);
-});}
-createCards();
+});
 /* |блок функций| */
 function openProfilePopup() {
   profilePopup.classList.add("popup_opened");
@@ -112,11 +111,46 @@ function formSubmitProfile(evt) {
 function formSubmitCard(evt) {
   evt.preventDefault();
   initialCards.unshift({name: cardInputName.value, link: cardInputLink.value});
+  const newCard = initialCards.slice(0, 1);
+  newCard.forEach((element) => {
+    // объявление переменных внутри template
+    const elementCard = elementTemplate.cloneNode(true);
+    const likeButton = elementCard.querySelector(".element__like-btn");
+    const elementImage = elementCard.querySelector(".element__image");
+    const popupImageWindow = document.querySelector(".popup_image-window");
+    const closeButtonImage = document.querySelector(".popup__close-btn_image");
+    const deleteButton = elementCard.querySelector(".element__delete-btn");
+
+    // присваивание данных из массива
+    elementImage.src = element.link;
+    elementImage.alt = element.name;
+    elementCard.querySelector(".element__title").textContent = element.name;
+    // кнопки внутри карточки
+    likeButton.addEventListener("click", (evt) => {
+      evt.target.classList.toggle("element__like-btn_active");
+    });
+    closeButtonImage.addEventListener("click", () => {
+      popupImageWindow.classList.remove("popup_opened");
+    });
+    deleteButton.addEventListener("click", (evt) => {
+      evt.target.parentElement.remove();
+    });
+    elementImage.addEventListener("click", (evt) => {
+      const popupImage = document.querySelector(".popup__image");
+      const popupImageTitle = document.querySelector(".popup__image-title");
+      const eventTarget = evt.target;
+      popupImageWindow.classList.add("popup_opened");
+      popupImage.src = eventTarget.src;
+      popupImageTitle.textContent = eventTarget.alt;
+    });
+
+    elementList.prepend(elementCard);
+  });
   closeCardPopup();
 };
 /* |блок слушателей| */
 formProfile.addEventListener("submit", formSubmitProfile);
-formCard.addEventListener('submit', formSubmitCard)
+formCard.addEventListener('submit', formSubmitCard);
 profileEditButton.addEventListener("click", openProfilePopup);
 elementAddButton.addEventListener("click", openCardPopup);
 closeButtonCard.addEventListener("click", closeCardPopup);
