@@ -48,7 +48,8 @@ const initialCards = [
   },
 ];
 /*  наполнение карточек */
-initialCards.forEach((element) => {
+function createCards() {
+  initialCards.forEach((element) => {
   // объявление переменных внутри template
   const elementCard = elementTemplate.cloneNode(true);
   const likeButton = elementCard.querySelector(".element__like-btn");
@@ -81,7 +82,8 @@ initialCards.forEach((element) => {
   });
 
   elementList.append(elementCard);
-});
+});}
+createCards();
 /* |блок функций| */
 function openProfilePopup() {
   profilePopup.classList.add("popup_opened");
@@ -109,12 +111,12 @@ function formSubmitProfile(evt) {
 } // submit name and job info from edit form into the profile holder
 function formSubmitCard(evt) {
   evt.preventDefault();
-  initialCards.unshift({name: cardInputName.value, link: cardInputLink.value})
+  initialCards.unshift({name: cardInputName.value, link: cardInputLink.value});
   closeCardPopup();
-
-}
+};
 /* |блок слушателей| */
 formProfile.addEventListener("submit", formSubmitProfile);
+formCard.addEventListener('submit', formSubmitCard)
 profileEditButton.addEventListener("click", openProfilePopup);
 elementAddButton.addEventListener("click", openCardPopup);
 closeButtonCard.addEventListener("click", closeCardPopup);
