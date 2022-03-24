@@ -43,15 +43,15 @@ function createCard(name, link) {
     evt.target.classList.toggle("element__like-btn_active");
   });
   imageCloseButton.addEventListener("click", () => {
-    popupImageWindow.classList.remove("popup_opened");
+    closePopup(popupImageWindow);
   });
   cardDeleteButton.addEventListener("click", (evt) => {
     evt.target.parentElement.remove();
   });
   elementImage.addEventListener("click", (evt) => {
-    openPopup(popupImageWindow);
     popupImage.src = evt.target.src;
     popupImageTitle.textContent = evt.target.alt;
+    openPopup(popupImageWindow);
   });
   return elementCard;
 }
