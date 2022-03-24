@@ -26,7 +26,7 @@ const imageCloseButton = document.querySelector(".popup__close-btn_image");
 
 initialCards.forEach((element) => {
   renderCard(element.name, element.link);
-});// заполнение начальными карточками
+}); // заполнение начальными карточками
 /* |блок функций| */
 function createCard(name, link) {
   // объявление переменных внутри template
@@ -58,15 +58,15 @@ function createCard(name, link) {
 
 function renderCard(name, link) {
   elementList.prepend(createCard(name, link));
-};
+}
 
 function openPopup(type) {
-  type.classList.add('popup_opened');
-};
+  type.classList.add("popup_opened");
+}
 
 function closePopup(type) {
-  type.classList.remove('popup_opened');
-};
+  type.classList.remove("popup_opened");
+}
 
 function openProfilePopup() {
   profileInputName.value = profileName.textContent;
