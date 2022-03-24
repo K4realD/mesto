@@ -9,7 +9,8 @@ const profilePopup = document.querySelector(".popup_profile-editor");
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about");
 /* поля формы для редактирования */
-let formElement = document.querySelector(".form");
+const formProfile = document.querySelector('.form_profile');
+const formCard = document.querySelector('.form_card');
 let profileInputName = document.querySelector(".form__item_input_name");
 let profileInputAbout = document.querySelector(".form__item_input_job");
 let cardInputName = document.querySelector(".form__item_input_description");
@@ -94,20 +95,26 @@ function closeProfilePopup() {
 
 function openCardPopup() {
   cardPopup.classList.add("popup_opened");
-}
+}// open card popup
 
 function closeCardPopup() {
   cardPopup.classList.remove("popup_opened");
-}
+}// close card popup
 
-function formSubmitHandler(evt) {
+function formSubmitProfile(evt) {
   evt.preventDefault();
   profileName.textContent = profileInputName.value;
   profileAbout.textContent = profileInputAbout.value;
   closeProfilePopup();
 } // submit name and job info from edit form into the profile holder
+function formSubmitCard(evt) {
+  evt.preventDefault();
+  initialCards.unshift({name: cardInputName.value, link: cardInputLink.value})
+  closeCardPopup();
+
+}
 /* |блок слушателей| */
-formElement.addEventListener("submit", formSubmitHandler);
+formProfile.addEventListener("submit", formSubmitProfile);
 profileEditButton.addEventListener("click", openProfilePopup);
 elementAddButton.addEventListener("click", openCardPopup);
 closeButtonCard.addEventListener("click", closeCardPopup);

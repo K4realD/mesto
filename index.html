@@ -58,7 +58,7 @@
             aria-label="Close-profile"
             class="popup__close-btn popup__close-btn_profile"
           ></button>
-          <form class="form" name="profile-editor">
+          <form class="form form_profile" name="profile-editor">
             <h2 class="form__heading">Редактировать профиль</h2>
             <fieldset class="form__container">
               <input
@@ -94,13 +94,14 @@
           aria-label="Close-card"
           class="popup__close-btn popup__close-btn_card"
         ></button>
-        <form class="form" name="card-editor">
+        <form class="form form_card" name="card-editor">
           <h2 class="form__heading">Новое место</h2>
           <fieldset class="form__container">
             <input
               type="text"
               name="image-name"
               value=""
+              placeholder="Название"
               class="form__item form__item_input_description"
               required
             />
@@ -108,6 +109,7 @@
               type="text"
               name="image-link"
               value=""
+              placeholder="Ссылка на картинку"
               class="form__item form__item_input_link"
               required
             />
