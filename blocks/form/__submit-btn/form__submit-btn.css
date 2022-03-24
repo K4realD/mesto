@@ -1,4 +1,4 @@
-.profile-editor__submit-btn {
+.form__submit-btn {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -15,13 +15,13 @@
   transition: 0.5s ease-in-out;
 }
 
-.profile-editor__submit-btn:hover {
+.form__submit-btn:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
 @media screen and (max-width: 675px) {
-  .profile-editor__submit-btn {
+  .form__submit-btn {
     font-size: 14px;
     line-height: 1.214;
     margin-top: 15px;

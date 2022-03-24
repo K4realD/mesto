@@ -1,4 +1,4 @@
-.profile-editor__heading {
+.form__heading {
   margin: 0;
   padding: 0;
   margin-left: 36px;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 675px) {
-  .profile-editor__heading {
+  .form__heading {
     font-size: 18px;
     line-height: 1.222;
     margin-left: 22px;
