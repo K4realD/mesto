@@ -42,9 +42,7 @@ function createCard(name, link) {
   elementlikeButton.addEventListener("click", (evt) => {
     evt.target.classList.toggle("element__like-btn_active");
   });
-  imageCloseButton.addEventListener("click", () => {
-    closePopup(popupImageWindow);
-  });
+
   cardDeleteButton.addEventListener("click", (evt) => {
     evt.target.parentElement.remove();
   });
@@ -104,3 +102,6 @@ profileEditButton.addEventListener("click", openProfilePopup);
 elementAddButton.addEventListener("click", openCardPopup);
 cardCloseButton.addEventListener("click", closeCardPopup);
 profileCloseButton.addEventListener("click", closeProfilePopup);
+imageCloseButton.addEventListener("click", () => {
+  closePopup(popupImageWindow);
+});
