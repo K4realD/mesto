@@ -56,7 +56,7 @@
             aria-label="Close-profile"
             class="popup__close-btn popup__close-btn_profile"
           ></button>
-          <form class="form form_profile" name="profile-editor">
+          <form class="form form_profile" name="profile-editor" novalidate>
             <h2 class="form__heading">Редактировать профиль</h2>
             <fieldset class="form__container">
               <input
@@ -65,14 +65,22 @@
                 value=""
                 class="form__item form__item_input_name"
                 required
+                minlength="2"
+                maxlength="40"
+                id="name-input"
               />
+              <span class="form__input-error name-input-error"></span>
               <input
                 type="text"
                 name="job"
                 value=""
                 class="form__item form__item_input_job"
                 required
+                minlength="2"
+                maxlength="200"
+                id="job-input"
               />
+              <span class="form__input-error job-input-error"></span>
               <button type="submit" aria-label="Save" class="form__submit-btn">
                 Сохранить
               </button>
@@ -88,25 +96,31 @@
             aria-label="Close-card"
             class="popup__close-btn popup__close-btn_card"
           ></button>
-          <form class="form form_card" name="card-editor">
+          <form class="form form_card" name="card-editor" novalidate>
             <h2 class="form__heading">Новое место</h2>
             <fieldset class="form__container">
               <input
                 type="text"
-                name="image-name"
+                name="image-title"
                 value=""
                 placeholder="Название"
                 class="form__item form__item_input_description"
                 required
+                minlength="2"
+                maxlength="30"
+                id="title-input"
               />
+              <span class="form__input-error title-input-error"></span>
               <input
-                type="text"
+                type="url"
                 name="image-link"
                 value=""
                 placeholder="Ссылка на картинку"
                 class="form__item form__item_input_link"
                 required
+                id="link-input"
               />
+              <span class="form__input-error link-input-error"></span>
               <button type="submit" aria-label="Save" class="form__submit-btn">
                 Создать
               </button>
@@ -147,6 +161,7 @@
       </li>
     </template>
     <script src="scripts/cards.js"></script>
+    <script src="scripts/validate.js"></script>
     <script src="scripts/index.js"></script>
   </body>
 </html>

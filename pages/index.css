@@ -47,3 +47,7 @@
 @import url(../blocks/form/__item/_input/form__item_input_description.css);
 @import url(../blocks/form/__item/_input/form__item_input_link.css);
 @import url(../blocks/form/__submit-btn/form__submit-btn.css);
+@import url(../blocks/form/__item/_type/form__item_type_error.css);
+@import url(../blocks/form/item-error/form__item-error_active.css);
+@import url(../blocks/form/__submit-btn/form__submit-btn_inactive.css);
+@import url(../blocks/form/__input-error/form__input-error.css);

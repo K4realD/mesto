@@ -24,6 +24,7 @@ const popupImageTitle = document.querySelector(".popup__image-title");
 const popupImageWindow = document.querySelector(".popup_type_image-window");
 const imageCloseButton = document.querySelector(".popup__close-btn_image");
 
+
 initialCards.forEach((element) => {
   renderCard(element.name, element.link);
 }); // заполнение начальными карточками
@@ -54,47 +55,59 @@ function createCard(name, link) {
   return elementCard;
 }
 
+function closePopupByEsc(evt) {
+  if(evt.key === 'Escape')
+  closePopup(document.querySelector('.popup_opened'))
+}; // закрытие попапа при нажатии клавиши Esc
+
+function closePopupByOverlay (evt) {
+  if (evt.target === evt.currentTarget)
+  closePopup(evt.target);
+} // закрытие попапа при нажатии на область вне модального окна попапа
+
 function renderCard(name, link) {
   elementList.prepend(createCard(name, link));
-}
+};
 
 function openPopup(type) {
   type.classList.add("popup_opened");
-}
+  document.addEventListener('keydown', closePopupByEsc);
+};
 
 function closePopup(type) {
   type.classList.remove("popup_opened");
-}
+  document.removeEventListener('keydown', closePopupByEsc);
+};
 
 function openProfilePopup() {
   profileInputName.value = profileName.textContent;
   profileInputAbout.value = profileAbout.textContent;
   openPopup(profilePopup);
-} // open profile popup
+}; // open profile popup
 
 function closeProfilePopup() {
   closePopup(profilePopup);
-}
+};
 
 function openCardPopup() {
   openPopup(cardPopup);
-} // open card popup
+}; // open card popup
 
 function closeCardPopup() {
   closePopup(cardPopup);
-} // close card popup
+}; // close card popup
 
 function formSubmitProfile(evt) {
   evt.preventDefault();
   profileName.textContent = profileInputName.value;
   profileAbout.textContent = profileInputAbout.value;
   closePopup(profilePopup);
-} // submit name and job info from edit form into the profile holder
+}; // submit name and job info from edit form into the profile holder
 function formSubmitCard(evt) {
   evt.preventDefault();
   renderCard(cardInputName.value, cardInputLink.value);
   closePopup(cardPopup);
-}
+};
 /* |блок слушателей| */
 formProfile.addEventListener("submit", formSubmitProfile);
 formCard.addEventListener("submit", formSubmitCard);
@@ -105,3 +118,6 @@ profileCloseButton.addEventListener("click", closeProfilePopup);
 imageCloseButton.addEventListener("click", () => {
   closePopup(popupImageWindow);
 });
+profilePopup.addEventListener('click', closePopupByOverlay);
+cardPopup.addEventListener('click', closePopupByOverlay);
+
