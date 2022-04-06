@@ -107,6 +107,8 @@ function formSubmitCard(evt) {
   evt.preventDefault();
   renderCard(cardInputName.value, cardInputLink.value);
   closePopup(cardPopup);
+  cardInputName.value = '';
+  cardInputLink.value = '';
 };
 /* |блок слушателей| */
 formProfile.addEventListener("submit", formSubmitProfile);
@@ -120,4 +122,5 @@ imageCloseButton.addEventListener("click", () => {
 });
 profilePopup.addEventListener('click', closePopupByOverlay);
 cardPopup.addEventListener('click', closePopupByOverlay);
+popupImageWindow.addEventListener('click', closePopupByOverlay);
 
