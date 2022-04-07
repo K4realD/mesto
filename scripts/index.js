@@ -4,6 +4,7 @@ const profileEditButton = document.querySelector(".profile__edit-btn");
 const profileCloseButton = document.querySelector(".popup__close-btn_profile");
 const elementAddButton = document.querySelector(".profile__add-btn");
 const cardCloseButton = document.querySelector(".popup__close-btn_card");
+const cardSubmitButton = document.querySelector(".submit-btn_type_card");
 /* профиль */
 const profilePopup = document.querySelector(".popup_type_profile-editor");
 const profileName = document.querySelector(".profile__name");
@@ -97,6 +98,14 @@ function closeCardPopup() {
   closePopup(cardPopup);
 }; // close card popup
 
+function disableSubmitButton() {
+  const submitButtonList = Array.from(document.querySelectorAll('.form__submit-btn'));
+  submitButtonList.forEach((button) => {
+    button.setAttribute('disabled', true);
+    button.classList.add('form__submit-btn_inactive')
+  })
+};
+
 function formSubmitProfile(evt) {
   evt.preventDefault();
   profileName.textContent = profileInputName.value;
@@ -109,6 +118,7 @@ function formSubmitCard(evt) {
   closePopup(cardPopup);
   cardInputName.value = '';
   cardInputLink.value = '';
+  disableSubmitButton();
 };
 /* |блок слушателей| */
 formProfile.addEventListener("submit", formSubmitProfile);
