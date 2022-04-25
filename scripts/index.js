@@ -34,34 +34,6 @@ const elementList = document.querySelector(".elements__list");
 const cardPopup = document.querySelector(".popup_type_card-editor");
 const popupImageWindow = document.querySelector(".popup_type_image-window");
 const imageCloseButton = document.querySelector(".popup__close-btn_image");
-/* |массив начальных карточек| */
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
 
 initialCards.forEach((element) => {
   renderCard(element);
@@ -78,10 +50,14 @@ function closePopupByOverlay (evt) {
 } // закрытие попапа при нажатии на область вне модального окна попапа
 
 function renderCard(element) {
+  elementList.prepend(createNewCard(element));
+};
+
+function createNewCard(element) {
   const card = new Card(element, '#template', openImagePopup);
   const newCard = card.createCard();
-  elementList.append(newCard);
-};
+  return newCard;
+}
 
 function openPopup(type) {
   type.classList.add("popup_opened");
@@ -115,27 +91,25 @@ function openImagePopup() {
   openPopup(popupImageWindow);
 }
 
-function formSubmitProfile(evt) {
+function submitProfileForm(evt) {
   evt.preventDefault();
   profileName.textContent = profileInputName.value;
   profileAbout.textContent = profileInputAbout.value;
   closePopup(profilePopup);
 }; // submit name and job info from edit form into the profile holder
-function formSubmitCard(evt) {
+function submitCardForm(evt) {
   evt.preventDefault();
   const submitButton = evt.currentTarget.querySelector('.form__submit-btn');
   const newElement = {name: cardInputName.value, link: cardInputLink.value};
   renderCard(newElement);
   closePopup(cardPopup);
-  cardInputName.value = '';
-  cardInputLink.value = '';
-  submitButton.setAttribute('disabled', true);
-  submitButton.classList.add('form__submit-btn_inactive')
+  formCard.reset();
+  cardForm.disableButtonState();
 };
 
 /* |блок слушателей| */
-formProfile.addEventListener("submit", formSubmitProfile);
-formCard.addEventListener("submit", formSubmitCard);
+formProfile.addEventListener("submit", submitProfileForm);
+formCard.addEventListener("submit", submitCardForm);
 profileEditButton.addEventListener("click", openProfilePopup);
 elementAddButton.addEventListener("click", openCardPopup);
 cardCloseButton.addEventListener("click", closeCardPopup);
@@ -147,5 +121,6 @@ profilePopup.addEventListener('click', closePopupByOverlay);
 cardPopup.addEventListener('click', closePopupByOverlay);
 popupImageWindow.addEventListener('click', closePopupByOverlay);
 
+import {initialCards} from './InitialCards.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';

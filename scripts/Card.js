@@ -20,10 +20,12 @@ export default class Card {
   };
   _handleDelete() {
     this._element.remove();
+    this._element = null;
   };
 
   _viewImage() {
     document.querySelector(".popup__image").src = this._link;
+    document.querySelector(".popup__image").alt = this._name;
     document.querySelector(".popup__image-title").textContent = this._name;
     this._handleOpenPopup();
   };

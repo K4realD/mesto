@@ -12,13 +12,21 @@ _hasInvalidInput() {
   });
 };
 
+disableButtonState() {
+  this._submitBtn.classList.add(this._validationElement.inactiveButtonClass);
+  this._submitBtn.setAttribute('disabled', true);
+};
+
+activateButtonState() {
+  this._submitBtn.classList.remove(this._validationElement.inactiveButtonClass);
+  this._submitBtn.removeAttribute('disabled');
+}
+
 _toggleButtonState() {
   if (this._hasInvalidInput()) {
-    this._submitBtn.classList.add(this._validationElement.inactiveButtonClass);
-    this._submitBtn.setAttribute('disabled', true);
+    this.disableButtonState()
   } else {
-    this._submitBtn.classList.remove(this._validationElement.inactiveButtonClass);
-    this._submitBtn.removeAttribute('disabled');
+    this.activateButtonState()
   }
 };
 
