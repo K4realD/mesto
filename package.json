@@ -4,7 +4,7 @@
   "description": "educational project",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "rm -rf dist && webpack",
     "dev": "webpack serve"
   },
   "repository": {
@@ -21,8 +21,7 @@
   },
   "homepage": "https://github.com/K4realD/mesto#readme",
   "dependencies": {
-    "core-js": "^3.22.4",
-    "jquery": "^3.6.0"
+    "core-js": "^3.22.4"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",

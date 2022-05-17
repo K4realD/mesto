@@ -5,10 +5,10 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    this._inputValues = {};
-    this._inputValues.name = this._name.textContent;
-    this._inputValues.info = this._info.textContent;
-    return this._inputValues;
+    return {
+      name: this._name.textContent,
+      info: this._info.textContent,
+    };
   }
 
   setUserInfo({ name, info }) {
