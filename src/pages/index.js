@@ -12,7 +12,7 @@ import {
   profileInputAbout,
   initialCards,
   cardInputTitle,
-  cardeInputLink
+  cardeInputLink,
 } from "../utils/constants.js";
 import "./index.css";
 
@@ -46,21 +46,24 @@ function createCard(item) {
     },
     "#template"
   );
-  const newCard = card.createCard();
-  return newCard;
+
+  return card.createCard();
 }
 
 defaultCardList.renderItem(); // заполнение карточками
 
 const formNewCard = new PopupWithForm({
   popupSelector: ".popup_type_card-editor",
-  submitForm: ({name, link}) => {
-    name = cardInputTitle.value;
-    link = cardeInputLink.value
-    defaultCardList.addItem(createCard({name, link}));
+  submitForm: (cardData) => {
+    defaultCardList.addItem(
+      createCard({
+        name: cardData.cardName,
+        link: cardData.link,
+      })
+    );
   },
 });
-formNewCard.setEventListeners()
+formNewCard.setEventListeners();
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
@@ -69,17 +72,18 @@ const userInfo = new UserInfo({
 
 const formProfile = new PopupWithForm({
   popupSelector: ".popup_type_profile-editor",
-  submitForm: ({name, info}) => {
-    name = profileInputName.value;
-    info = profileInputAbout.value
-    userInfo.setUserInfo({name, info});
+  submitForm: (profileInfo) => {
+    userInfo.setUserInfo({
+      name: profileInfo.profileName,
+      info: profileInfo.info
+    });
   },
 });
-formProfile.setEventListeners()
+formProfile.setEventListeners();
 
 /* |блок слушателей| */
 profileEditButton.addEventListener("click", () => {
-  const {name, info} = userInfo.getUserInfo()
+  const { name, info } = userInfo.getUserInfo();
   profileInputName.value = name;
   profileInputAbout.value = info;
   formProfile.open();
