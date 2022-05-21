@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Третий проект на Яндекс.Практикуме" />
     <meta name="author" content="Кирилл Дианов" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Место</title>
-  </head>
+  <script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
   <body>
     <div class="page">
       <header class="header">
@@ -18,7 +17,7 @@
           <div class="profile__content">
             <img
               class="profile__avatar"
-              src="images/jaque.jpg"
+              src="images/jaque.6163c2039d1f0eb8d7ca.jpg"
               alt="Аватар пользователя"
             />
             <div class="profile__info">
@@ -61,7 +60,7 @@
             <fieldset class="form__container">
               <input
                 type="text"
-                name="username"
+                name="profileName"
                 value=""
                 class="form__item form__item_input_name"
                 required
@@ -72,7 +71,7 @@
               <span class="form__input-error name-input-error"></span>
               <input
                 type="text"
-                name="job"
+                name="info"
                 value=""
                 class="form__item form__item_input_job"
                 required
@@ -101,7 +100,7 @@
             <fieldset class="form__container">
               <input
                 type="text"
-                name="image-title"
+                name="cardName"
                 value=""
                 placeholder="Название"
                 class="form__item form__item_input_description"
@@ -113,7 +112,7 @@
               <span class="form__input-error title-input-error"></span>
               <input
                 type="url"
-                name="image-link"
+                name="link"
                 value=""
                 placeholder="Ссылка на картинку"
                 class="form__item form__item_input_link"
@@ -160,9 +159,5 @@
         ></button>
       </li>
     </template>
-    <script type="module" src="scripts/Card.js"></script>
-    <script type="module" src="scripts/FormValidator.js"></script>
-    <script type="module" src="scripts/InitialCards.js"></script>
-    <script type="module" src="scripts/index.js"></script>
   </body>
 </html>
