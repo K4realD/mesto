@@ -210,7 +210,7 @@ avatarEditButton.addEventListener("click", () => {
 });
 
 Promise.all([api.getUserInfo(), api.getInitialCards()]).then((res) => {
-  userInfo.setUserInfo(res[0].name, res[0].about);
+  userInfo.setUserInfo({name: res[0].name, info: res[0].about});
   userInfo.setUserAvatar(res[0].avatar);
   userInfo.setUserId(res[0]._id);
   defaultCardList.renderItem(res[1]);
