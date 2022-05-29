@@ -12,6 +12,7 @@ import {
   profileInputAbout,
   api,
   avatarEditButton,
+  formConfirmSbmtBtn,
 } from "../utils/constants.js";
 import "./index.css";
 import PopupWithSubmit from "../components/PopupWithSubmit.js";
@@ -24,10 +25,7 @@ const profileFormValidator = new FormValidator(
 profileFormValidator.enableValidation(); // активация валидации формы редактирования профиля
 const cardFormValidator = new FormValidator(validationSelectors, ".form_card"); //объявление формы добавления карточки
 cardFormValidator.enableValidation(); // активация валидации формы добавления карточки
-const avatarFormValidator = new FormValidator(
-  validationSelectors,
-  ".form_avatar"
-); //объявление формы изменения аватара
+const avatarFormValidator = new FormValidator(validationSelectors, ".form_avatar");
 avatarFormValidator.enableValidation();
 
 const popupImage = new PopupWithImage(".popup_type_image-window");
@@ -77,9 +75,7 @@ function createNewCard(item) {
       handleDelete: (card) => {
         formDeleteCard.open();
         formDeleteCard.changeSubmitHandler(() => {
-          const form = document.querySelector(".form_confirm");
-          const btnSubmit = form.querySelector(".form__submit-btn");
-          btnSubmit.textContent = "Сохранение...";
+          formConfirmSbmtBtn.textContent = "Сохранение...";
           api
             .deleteCard(card.getId())
             .then(() => {
@@ -90,7 +86,7 @@ function createNewCard(item) {
               console.log(err);
             })
             .finally(() => {
-              btnSubmit.textContent = "Да";
+              formConfirmSbmtBtn.textContent = "Да";
             });
         });
       },
@@ -157,9 +153,9 @@ const formAvatar = new PopupWithForm({
   submitForm: (evt) => {
     evt.preventDefault();
     formAvatar.renderLoading(true);
-    const inputValue = formAvatar.formInputValues();
+    const inputFormValue = formAvatar.formInputValues();
     api
-      .patchAvatar({ avatar: inputValue.avatarLink })
+      .patchAvatar({ avatar: inputFormValue.avatar })
       .then((data) => {
         userInfo.setUserAvatar(data.avatar);
         formAvatar.close();
@@ -175,23 +171,7 @@ const formAvatar = new PopupWithForm({
 formAvatar.setEventListeners();
 
 const formDeleteCard = new PopupWithSubmit(".popup_type_confirm");
-function deleteItem(card) {
-  const formConfirm = document.querySelector(".popup_type_confirm");
-  const btnConfirm = formConfirm.querySelector(".form__submit-btn");
-  btnConfirm.textContent = "Сохранение...";
-  api
-    .deleteCard(cardId)
-    .then(() => {
-      card.delete();
-      formDeleteCard.close();
-    })
-    .catch((err) => {
-      console.log("Не удалось удалить карточку", err);
-    })
-    .finally(() => {
-      btnConfirm.textContent = "Да";
-    });
-}
+
 formDeleteCard.setEventListeners();
 
 /* |блок слушателей| */
@@ -213,5 +193,5 @@ Promise.all([api.getUserInfo(), api.getInitialCards()]).then((res) => {
   userInfo.setUserInfo({name: res[0].name, info: res[0].about});
   userInfo.setUserAvatar(res[0].avatar);
   userInfo.setUserId(res[0]._id);
-  defaultCardList.renderItem(res[1]);
+  defaultCardList.renderItem(res[1].reverse());
 });

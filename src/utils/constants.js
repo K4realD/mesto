@@ -24,33 +24,9 @@ const profileInputAbout = document.querySelector(".form__item_input_job");
 const cardInputTitle = document.querySelector('.form__item_input_description');
 const cardeInputLink = document.querySelector('.form__item_input_link');
 const avatarEditButton = document.querySelector('.profile__avatar');
-/* |массив начальных карточек| */
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
+const formConfirm = document.querySelector(".form_confirm");
+const formConfirmSbmtBtn = formConfirm.querySelector(".form__submit-btn");
+
 
 export {
   validationSelectors,
@@ -58,9 +34,9 @@ export {
   elementAddButton,
   profileInputName,
   profileInputAbout,
-  initialCards,
   cardInputTitle,
   cardeInputLink,
   api,
-  avatarEditButton
+  avatarEditButton,
+  formConfirmSbmtBtn
 };

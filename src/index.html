@@ -69,6 +69,7 @@
                 minlength="2"
                 maxlength="40"
                 id="name-input"
+                placeholder="Введите свое имя"
               />
               <span class="form__input-error name-input-error"></span>
               <input
@@ -80,6 +81,7 @@
                 minlength="2"
                 maxlength="200"
                 id="job-input"
+                placeholder="О себе"
               />
               <span class="form__input-error job-input-error"></span>
               <button type="submit" aria-label="Save" class="form__submit-btn">
@@ -177,14 +179,14 @@
           <fieldset class="form__container">
             <input
               type="url"
-              name="avatarLink"
+              name="avatar"
               value=""
               placeholder="Ссылка на картинку"
               class="form__item form__item_input_link"
               required
               id="link-avatar-input"
             />
-            <span class="form__input-error link-input-error"></span>
+            <span class="form__input-error link-avatar-input-error"></span>
             <button type="submit" aria-label="Save" class="form__submit-btn">
               Сохранить
             </button>
